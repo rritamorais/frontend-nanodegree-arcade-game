@@ -129,8 +129,9 @@ player.prototype.win = function() {
 
 //when player looses looses 1 life and resets
 player.prototype.lose = function() {
+  // this.sprite = 'images/char-cat-hit.png';
+
   this.lives -= 1;
-  console.log(this.lives);
   allHearts[this.lives].sprite = "images/Heartless.png";
 
   if (this.lives > 0) {
@@ -172,9 +173,10 @@ function resetGame() {
 //Check collisions 
 function checkCollisions() {
   allEnemies.forEach(function(bug) {
-    //due to sporadic strange rendering errors for the y value used 5 instead of 0
-    if(Math.abs(bug.y-player.y)<5 && player.lives > 0){ //prevents player from having negative lives
+    //due to sporadic strange rendering errors for the y value used 60 instead of 0
+    if(Math.abs(bug.y-player.y)<60 && player.lives > 0){ //prevents player from having negative lives
       if(Math.abs(bug.x-player.x)<80) 
+
         player.lose();    
     }
   });
